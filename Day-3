@@ -1,0 +1,52 @@
+49. Group Anagrams
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String,List<String>> hm=new HashMap<>();
+     for(int i=0;i<strs.length;i++){
+        char[] ch=strs[i].toCharArray();
+        Arrays.sort(ch);
+        String k=new String(ch);
+        if(!hm.containsKey(k)){
+            hm.put(k,new ArrayList<>());
+        }
+            hm.get(k).add(strs[i]);
+     }  
+     return new ArrayList<>(hm.values()); 
+    }
+}
+
+242. Valid Anagram
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()) return false;
+        char[] a=s.toCharArray();
+        char[] b=t.toCharArray();
+        Arrays.sort(a);
+        Arrays.sort(b);
+        return Arrays.equals(a,b);
+    }
+}
+
+28. Find the Index of the First Occurrence in a String
+
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int j=0;
+        for(int i=0;i<haystack.length();i++){
+            if(haystack.charAt(i)==needle.charAt(j)){
+                j++;
+            }
+            else{
+                i=i-j;
+                j=0;
+            }
+            if(j==needle.length()){
+                return i-needle.length()+1;
+            }
+        }
+        return -1;
+    }
+}
