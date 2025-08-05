@@ -1,0 +1,74 @@
+20. Valid Parentheses
+    class Solution {
+        public boolean isValid(String s) {
+          Stack<Character> st=new Stack<>();
+          for(char ch:s.toCharArray()){
+            if(ch=='(' || ch=='[' || ch=='{'){
+                st.push(ch);
+            }
+            else{
+                if(st.isEmpty()){
+                    return false;
+                }
+                char top=st.pop();
+                if((ch==')' && top!='(') || (ch==']' && top!='[') || (ch=='}' && top!='{')){
+                    return false;
+                }
+            }
+    
+          } 
+          return st.isEmpty(); 
+        }
+    }
+5.Longest Palindromic Substring
+  class Solution {
+      public String longestPalindrome(String s) {
+          int lengh=0;
+          String longest="";
+          for(int i=0;i<s.length();i++){
+              for(int j=i;j<s.length();j++){
+                  String sub=s.substring(i,j+1);
+                  if(ispalindrome(sub)){
+                      if(sub.length()>lengh){
+                          lengh=sub.length();
+                          longest=sub;
+                      }
+                  }
+              }
+          }
+              return longest;
+          }
+         boolean ispalindrome(String sub){
+              int left=0;
+              int right=sub.length()-1;
+              while(left<right){
+                  if(sub.charAt(left)!=sub.charAt(right)){
+                      return false;
+                  }
+                  left++;
+                  right--;
+              }
+          
+          return true;
+  }
+  }
+
+
+560. Subarray Sum Equals K
+
+
+  class Solution {
+    public int subarraySum(int[] nums, int k) {
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            int sum=0;
+            for(int j=i;j<nums.length;j++){
+                sum=sum+nums[j];
+                if(sum==k){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
