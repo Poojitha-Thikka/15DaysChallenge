@@ -1,0 +1,40 @@
+704. Binary Search
+    class Solution {
+        public int search(int[] nums, int target) {
+          int left=0;
+          int right=nums.length-1;
+          while(left<=right){
+            int mid=left+(right-left)/2;
+    
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(nums[mid]>target){
+                right=mid-1;
+            }
+            else{
+                left=mid+1;
+            }
+          }  
+          return -1;
+        }
+    }
+
+
+141. Linked List Cycle
+
+    public class Solution {
+        public boolean hasCycle(ListNode head) {
+            ListNode slow=head;
+            ListNode fast=head;
+            while(fast!=null && fast.next!=null){
+                slow=slow.next;
+                fast=fast.next.next;
+                if(slow==fast){
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+    View less
